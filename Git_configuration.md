@@ -107,3 +107,73 @@ Yes. You can set different `user.name` and `user.email` at the local repository 
 ```bash
 git commit --amend --reset-author
 ```
+---
+
+Git allows you to configure settings at three different levels of priority.
+
+## 🔹 1️⃣ Global Configuration
+
+If you want to configure Git globally for your specific user account across all projects:
+
+```bash
+git config --global key value
+```
+
+**Example:**
+```bash
+git config --global user.name "Your Name"
+```
+
+*   **Scope:** Applies to all repositories for your user.
+*   **Storage Locations:**
+    *   **Windows:** `C:\Users\<User>\.gitconfig`.
+    *   **Linux/Mac:** `~/.gitconfig`.
+
+---
+
+## 🔹 2️⃣ System-Level Configuration
+
+If you want to configure Git for the entire machine, affecting every user:
+
+```bash
+git config --system key value
+```
+
+*   **Scope:** Applies to all users on the machine.
+*   **Requirement:** Requires administrator or root privileges.
+*   **Storage Locations:**
+    *   **Windows:** `C:\Program Files\Git\etc\gitconfig`.
+    *   **Linux/Mac:** `/etc/gitconfig`.
+
+---
+
+## 🔹 3️⃣ Local Configuration (Repository-Level)
+
+If you are inside a specific Git repository and want settings to apply only to that project:
+
+```bash
+git config key value
+```
+
+*   **Scope:** Current repository only.
+*   **Storage Location:** Stored within the project in `.git/config`.
+
+---
+
+## 🔥 Important: Priority Order (Interview Question)
+
+If the same setting (such as `user.name`) exists at all three levels, Git follows a specific hierarchy to determine which value to use:
+
+**Local > Global > System**
+
+Git will always use the **local** value first if it is defined. For example, if you have a work email set globally but a personal email set locally in a specific project, Git will use the local personal email for that repository.
+
+---
+
+## 🎯 Summary Table
+
+| Level | Command | Scope |
+| :--- | :--- | :--- |
+| **Local** | `git config` (no flag) | Current repository only |
+| **Global** | `git config --global` | Current user account |
+| **System** | `git config --system` | Entire machine/all users |

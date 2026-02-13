@@ -3,10 +3,10 @@
 **Answer:**
 
 `git status` shows the **current state of the working directory and staging area**. It identifies which files are:
-*   Untracked
-*   Modified
-*   Staged
-*   Committed
+*   Untracked : file not yet part of version control (Git is not tracking it)
+*   Modified : file modified after the last commit
+*   Staged : file ready to be commited
+*   Committed : file saved in the local repo
 
 2️⃣ **Why is git status important?**
 
